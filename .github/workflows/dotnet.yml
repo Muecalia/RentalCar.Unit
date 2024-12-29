@@ -26,13 +26,13 @@ jobs:
       run: dotnet restore ./RentalCar.Unit.API/RentalCar.Unit.API.csproj
 
     - name: Restore dependencies Unit Test
-      run: dotnet restore ./RentalCar.Unit.API/RentalCar.UnitTest.API.csproj
+      run: dotnet restore ./RentalCar.Unit.UnitTest/RentalCar.Unit.UnitTest.csproj
       
     - name: Build API
       run: dotnet build ./RentalCar.Unit.API/RentalCar.Unit.API.csproj --no-restore
 
     - name: Build Unit Test
-      run: dotnet build ./RentalCar.Unit.API/RentalCar.UnitTest.API.csproj --no-restore
+      run: dotnet build ./RentalCar.Unit.UnitTest/RentalCar.Unit.UnitTest.csproj --no-restore
       
     - name: Unit Test
-      run: dotnet test ./RentalCar.Unit.API/RentalCar.UnitTest.API.csproj --no-build --verbosity normal
+      run: dotnet test ./RentalCar.Unit.UnitTest/RentalCar.Unit.UnitTest.csproj --no-build --verbosity normal
