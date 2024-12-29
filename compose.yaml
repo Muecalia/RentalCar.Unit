@@ -1,0 +1,31 @@
+﻿services:
+  unit.api:
+    image: rentalcar.unit.api
+    build:
+      context: .
+      dockerfile: RentalCar.Unit.API/Dockerfile
+    container_name: unit.api
+    restart: always
+    depends_on:
+      - unit.db
+    ports:
+      - "812:8080"
+      - "813:8081"
+    volumes:
+      - unitAppLogs:/logs
+
+  unit.db:
+    image: postgres:16
+    container_name: unit.postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5435:5432"
+    volumes:
+      - unit_data:/var/lib/postgresql/data
+
+volumes:
+  unit_data:
+  unitAppLogs:
